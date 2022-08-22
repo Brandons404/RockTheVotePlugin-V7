@@ -1,0 +1,7 @@
+name: rtv
+displayName: RTV
+author: >;;;>Fish
+description: "Adds Rock The Vote on v7 servers."
+version: 1.0
+minGameVersion: 136
+hidden: true
