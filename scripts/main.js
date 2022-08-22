@@ -12,7 +12,7 @@ Events.on(PlayerLeave, (e) => {
   const pid = player.uuid();
 
   if (votes.includes(player.uuid())) {
-    let votes = votes.filter((id) => id !== pid);
+    votes = votes.filter((id) => id !== pid);
     Call.sendMessage(
       'RTV: [accent]' +
         player.name +
