@@ -47,9 +47,23 @@ Events.on(ServerLoadEvent, (e) => {
         return;
       }
 
-      votes.push(player.uuid());
       const currentVotes = votes.length;
       const requiredVotes = Math.ceil(ratio * Groups.player.size());
+
+      if (votes.includes(player.uuid())) {
+        Call.sendMessage(
+          'RTV: [accent]' +
+            player.name +
+            '[] wants to change the map, [green]' +
+            currentVotes +
+            '[] votes, [green]' +
+            requiredVotes +
+            '[] required'
+        );
+        return;
+      }
+
+      votes.push(player.uuid());
       Call.sendMessage(
         'RTV: [accent]' +
           player.name +
