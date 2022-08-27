@@ -1,7 +1,3 @@
-# WARNING
-My players have recently discovered a bug with voting, with requiring an impossible number of votes. I am working on a fix as we speak and will upload a fix asap. 
-Sorry for any inconvenience.
-
 # Rock The Vote
 
 A lightweight javascript re-write of the original [RockTheVotePlugin](https://github.com/mayli/RockTheVotePlugin) updated to run on V7 servers.

@@ -7,12 +7,12 @@ const ratio = 0.6;
 
 Events.on(PlayerLeave, (e) => {
   const player = e.player;
-  const currentVotes = votes.length;
-  const requiredVotes = Math.ceil(ratio * Groups.player.size());
   const pid = player.uuid();
 
-  if (votes.includes(player.uuid())) {
+  if (votes.includes(pid)) {
     votes = votes.filter((id) => id !== pid);
+    const currentVotes = votes.length;
+    const requiredVotes = Math.ceil(ratio * Groups.player.size());
     Call.sendMessage(
       'RTV: [accent]' +
         player.name +
@@ -47,10 +47,9 @@ Events.on(ServerLoadEvent, (e) => {
         return;
       }
 
-      const currentVotes = votes.length;
-      const requiredVotes = Math.ceil(ratio * Groups.player.size());
-
       if (votes.includes(player.uuid())) {
+        let currentVotes = votes.length;
+        let requiredVotes = Math.ceil(ratio * Groups.player.size());
         Call.sendMessage(
           'RTV: [accent]' +
             player.name +
@@ -64,6 +63,8 @@ Events.on(ServerLoadEvent, (e) => {
       }
 
       votes.push(player.uuid());
+      let currentVotes = votes.length;
+      let requiredVotes = Math.ceil(ratio * Groups.player.size());
       Call.sendMessage(
         'RTV: [accent]' +
           player.name +
