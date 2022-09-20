@@ -22,6 +22,12 @@ Events.on(PlayerLeave, (e) => {
         requiredVotes +
         '[] required'
     );
+    if (currentVotes >= requiredVotes) {
+      votes = [];
+      Call.sendMessage('RTV: [green] vote passed, changing map.');
+      Events.fire(new GameOverEvent(Team.crux));
+      return;
+    }
   }
 });
 
@@ -59,6 +65,12 @@ Events.on(ServerLoadEvent, (e) => {
             requiredVotes +
             '[] required'
         );
+        if (currentVotes >= requiredVotes) {
+          votes = [];
+          Call.sendMessage('RTV: [green] vote passed, changing map.');
+          Events.fire(new GameOverEvent(Team.crux));
+          return;
+        }
         return;
       }
 
@@ -75,13 +87,14 @@ Events.on(ServerLoadEvent, (e) => {
           '[] required'
       );
 
-      if (currentVotes < requiredVotes) {
+      if (currentVotes >= requiredVotes) {
+        votes = [];
+        Call.sendMessage('RTV: [green] vote passed, changing map.');
+        Events.fire(new GameOverEvent(Team.crux));
         return;
       }
 
-      votes = [];
-      Call.sendMessage('RTV: [green] vote passed, changing map.');
-      Events.fire(new GameOverEvent(Team.crux));
+      return;
     })
   );
 });
